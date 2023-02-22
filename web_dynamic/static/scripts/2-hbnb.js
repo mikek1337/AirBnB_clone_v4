@@ -12,4 +12,11 @@ $(document).ready(() => {
     const amenitiesList = amenitiesName.join(',');
     $('.amenities h4').text(amenitiesList);
   });
+  const res = $.ajax({
+    url: 'http://0.0.0.0:5001/api/v1/status',
+    method: 'GET',
+    dataType: 'json',
+    async: false
+  }).responseJSON;
+  if (res.status === 'OK') { $('#api_status').addClass('available'); } else { $('#api_status').removeClass('available'); }
 });
